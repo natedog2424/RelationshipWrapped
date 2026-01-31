@@ -197,8 +197,9 @@ function goToPage(newIndex) {
     // Update current page index
     currentPageIndex = newIndex;
 
-    // Update URL
-    const url = newIndex === 0 ? '/' : `/#page-${newIndex + 1}`;
+    // Update URL with relative path to preserve subdirectory
+    const basePath = window.location.pathname;
+    const url = newIndex === 0 ? basePath : `${basePath}#page-${newIndex + 1}`;
     history.pushState({ page: newIndex }, '', url);
 
     // Update button states
@@ -434,7 +435,8 @@ function initializePageFromURL() {
         }
     }
     // If no valid hash, ensure we're on page 1
-    history.replaceState({ page: 0 }, '', '/');
+    const basePath = window.location.pathname;
+    history.replaceState({ page: 0 }, '', basePath);
 }
 
 // Initialize from URL
