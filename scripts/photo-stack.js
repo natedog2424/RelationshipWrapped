@@ -35,7 +35,9 @@ function createPhotoCard(filename, index) {
     card.dataset.cardIndex = index;
 
     const img = document.createElement('img');
-    img.src = `photos/stack/${filename}`;
+    // Use path relative to the HTML document location
+    const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+    img.src = `${basePath}photos/stack/${filename}`;
     img.alt = 'Memory';
 
     card.appendChild(img);
