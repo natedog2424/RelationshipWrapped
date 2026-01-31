@@ -198,7 +198,12 @@ function goToPage(newIndex) {
     currentPageIndex = newIndex;
 
     // Update URL with relative path to preserve subdirectory
-    const basePath = window.location.pathname;
+    // Get the pathname without any hash
+    let basePath = window.location.pathname;
+    // Ensure trailing slash for consistency
+    if (!basePath.endsWith('/') && !basePath.includes('.')) {
+        basePath += '/';
+    }
     const url = newIndex === 0 ? basePath : `${basePath}#page-${newIndex + 1}`;
     history.pushState({ page: newIndex }, '', url);
 
@@ -435,7 +440,11 @@ function initializePageFromURL() {
         }
     }
     // If no valid hash, ensure we're on page 1
-    const basePath = window.location.pathname;
+    let basePath = window.location.pathname;
+    // Ensure trailing slash for consistency
+    if (!basePath.endsWith('/') && !basePath.includes('.')) {
+        basePath += '/';
+    }
     history.replaceState({ page: 0 }, '', basePath);
 }
 
