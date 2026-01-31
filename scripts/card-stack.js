@@ -23,7 +23,7 @@ const cardData = [
         response2: "you'd be the star ond you'd be on top of the tree of course"
     },
     {
-        prompt: "What is one eperience you with you could relive for the first time with them?",
+        prompt: "What is one experience you wish you could relive for the first time with them?",
         response1: "probabally my first kiss",
         response2: "stargazing in fountain hills"
     },
